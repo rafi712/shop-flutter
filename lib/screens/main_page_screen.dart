@@ -180,7 +180,7 @@ class _MainPageScreenState extends State<MainPageScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Ink.image(
-                      image: AssetImage('assets/images/earphone.png'),
+                      image: AssetImage('assets/images/laptop.png'),
                       height: 200,
                       width: 200,
                       fit: BoxFit.contain,
