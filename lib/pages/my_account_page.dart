@@ -5,35 +5,24 @@ class MyAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue,
+        // color: Colors.blue,
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 29,
-                          color: Colors.white70,
-                        )
-                      ),
-                      IconButton(
-                        splashRadius: 25.0,
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white70,
-                        )
-                      ),
-                    ],
+                  child: IconButton(
+                    splashRadius: 25.0,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 29,
+                      // color: Colors.white70,
+                    )
                   ),
                 ),
               ),
@@ -45,7 +34,7 @@ class MyAccountPage extends StatelessWidget {
                 title: Text(
                   'My Name', 
                   style: TextStyle(
-                    color: Colors.white,
+                    // color: Colors.white,
                     fontSize: 19,
                     fontWeight: FontWeight.bold
                   ),
@@ -53,7 +42,7 @@ class MyAccountPage extends StatelessWidget {
                 subtitle: Text(
                   'Regular Member',
                   style: TextStyle(
-                    color: Colors.grey[300]
+                    // color: Colors.grey[300]
                   ),
                 ),
               ),
@@ -62,7 +51,7 @@ class MyAccountPage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  // color: Colors.purple,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25), 
                     topRight: Radius.circular(25),
@@ -80,7 +69,7 @@ class MyAccountPage extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {},
                     ),                  
-                    dividerLine(),
+                    // dividerLine(),
                     ListTile(
                       leading: Icon(
                         Icons.access_time,
@@ -102,7 +91,7 @@ class MyAccountPage extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {},
                     ),
-                    dividerLine(),
+                    // dividerLine(),
                     ListTile(
                       leading: Icon(
                         Icons.local_activity_outlined,
@@ -124,7 +113,7 @@ class MyAccountPage extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {},
                     ),
-                    dividerLine(),
+                    // dividerLine(),
                     ListTile(
                       leading: Icon(
                         Icons.help_outline,
@@ -135,7 +124,7 @@ class MyAccountPage extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {},
                     ),
-                    dividerLine(),
+                    // dividerLine(),
                     
 
                   ],

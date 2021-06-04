@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_shop/pages/detail_page.dart';
 import 'package:my_shop/pages/my_account_page.dart';
-import 'package:my_shop/model/products.dart';
+// import 'package:my_shop/model/products.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -134,7 +134,9 @@ class _MainPageState extends State<MainPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Ink.image(
-                      image: AssetImage('assets/images/book.png'),
+                      image: AssetImage(
+                        'assets/images/book.png'
+                      ),
                       height: 200,
                       width: 150,
                       fit: BoxFit.contain,
