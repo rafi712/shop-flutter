@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/pages/main_page.dart';
+import 'package:my_shop/screens/main_screen.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   bool isPasswordVisible = false;
   
   @override
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                   builder: (context) {
-                    return MainPage();
+                    return MainScreen();
                   }
                 ));
               },

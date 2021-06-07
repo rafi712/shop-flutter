@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_shop/components/favorite_button.dart';
+import 'package:my_shop/model/products.dart';
 
-// import 'package:my_shop/model/products.dart';
-class DetailPage extends StatefulWidget {
-  // final Products product;
-  // DetailPage({required this.product});
+class DetailScreen extends StatefulWidget {
+  final Products product;
+  DetailScreen({required this.product});
 
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _DetailScreenState createState() => _DetailScreenState(product);
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailScreenState extends State<DetailScreen> {
+  final Products product;
+  _DetailScreenState(this.product);
   int minItem = 1;
   int item = 1;
 
@@ -18,7 +21,7 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
         body: Container(
       decoration: BoxDecoration(
-        color: Colors.blue[300],
+        color: product.coverColor,
       ),
       child: Stack(children: [
         Column(
@@ -31,23 +34,29 @@ class _DetailPageState extends State<DetailPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          size: 29,
-                          color: Colors.white70,
-                        )),
-                    IconButton(
-                      iconSize: 30,
-                      splashRadius: 25.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon: Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      )
+                        Icons.arrow_back,
+                        size: 29,
+                        color: Colors.white70,
+                      ),
                     ),
+                    Container(
+                      width: 110,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(24)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(onPressed: (){}, icon: Icon(Icons.add_shopping_cart)),
+                          FavoriteButton()
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -56,14 +65,14 @@ class _DetailPageState extends State<DetailPage> {
               height: 250,
               // color: Colors.white,
               child: Center(
-                child: Image(image: AssetImage('assets/images/book.png')),
+                child: Image(image: AssetImage(product.imageUrl)),
               ),
             ),
             SizedBox(height: 7),
             Padding(
               padding: const EdgeInsets.only(left: 25).copyWith(bottom: 5),
               child: Text(
-                'Text Book',
+                product.name,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 36,
@@ -75,7 +84,7 @@ class _DetailPageState extends State<DetailPage> {
             Padding(
               padding: const EdgeInsets.only(left: 25),
               child: Text(
-                'Rp7.000.000',
+                product.price,
                 style: TextStyle(fontSize: 23, color: Colors.white70),
               ),
             ),
@@ -107,8 +116,9 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24)),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24)
+                    ),
                     width: 130,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +133,7 @@ class _DetailPageState extends State<DetailPage> {
                             });
                           },
                         ),
-                        Text(item.toString()),
+                        Text(item.toString(), style: TextStyle(fontSize: 18),),
                         IconButton(
                           icon: Icon(Icons.add),
                           onPressed: () {
@@ -136,18 +146,15 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {}, 
+                    onPressed: () {},
                     child: Text(
                       'Buy Now',
-                      style: TextStyle(
-                        fontSize: 16
-                      ),
+                      style: TextStyle(fontSize: 16),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[800],
-                      minimumSize: Size(120, 47),
-                      shape: StadiumBorder()
-                    ),
+                        primary: product.buttonColor,
+                        minimumSize: Size(120, 47),
+                        shape: StadiumBorder()),
                   )
                 ],
               ),
