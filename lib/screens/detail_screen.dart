@@ -13,7 +13,6 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   final Products product;
   _DetailScreenState(this.product);
-  int minItem = 1;
   int item = 1;
 
   @override
@@ -46,13 +45,25 @@ class _DetailScreenState extends State<DetailScreen> {
                     Container(
                       width: 110,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24)
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          IconButton(onPressed: (){}, icon: Icon(Icons.add_shopping_cart)),
+                          IconButton(
+                              onPressed: () {
+                                final snackBar = SnackBar(
+                                  duration: Duration(seconds: 1),
+                                  content: Text(
+                                    'Added to your shopping cart',
+                                    style: TextStyle(fontSize: 17),
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context)
+                                  ..hideCurrentSnackBar()
+                                  ..showSnackBar(snackBar);
+                              },
+                              icon: Icon(Icons.add_shopping_cart)),
                           FavoriteButton()
                         ],
                       ),
@@ -70,7 +81,8 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
             SizedBox(height: 7),
             Padding(
-              padding: const EdgeInsets.only(left: 25).copyWith(bottom: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 25)
+                  .copyWith(bottom: 5),
               child: Text(
                 product.name,
                 style: TextStyle(
@@ -86,6 +98,14 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Text(
                 product.price,
                 style: TextStyle(fontSize: 23, color: Colors.white70),
+              ),
+            ),
+            SizedBox(height: 6),
+            Padding(
+              padding: const EdgeInsets.only(left: 25),
+              child: Text(
+                (product.stock == 0) ? 'Sold out' : 'Stock : ' + product.stock.toString(),
+                style: TextStyle(fontSize: 18, color: Colors.white70),
               ),
             ),
             SizedBox(height: 30),
@@ -116,37 +136,55 @@ class _DetailScreenState extends State<DetailScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(24)
-                    ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(24)),
                     width: 130,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
                           icon: Icon(Icons.remove),
-                          onPressed: () {
-                            setState(() {
-                              if (item > minItem) {
-                                item--;
-                              }
-                            });
-                          },
+                          onPressed: (item == 1)
+                              ? null
+                              : () {
+                                  setState(() => item--);
+                                },
                         ),
-                        Text(item.toString(), style: TextStyle(fontSize: 18),),
+                        Text(
+                          item.toString(),
+                          style: TextStyle(fontSize: 18),
+                        ),
                         IconButton(
                           icon: Icon(Icons.add),
-                          onPressed: () {
-                            setState(() {
-                              item++;
-                            });
-                          },
+                          onPressed: (item >= product.stock)
+                              ? null
+                              : () {
+                                  setState(() => item++);
+                                },
                         )
                       ],
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: (product.stock == 0) ? null 
+                        : () {
+                      final snackBar = SnackBar(
+                        duration: Duration(seconds: 1),
+                        content: Text(
+                          'You ordered $item ${(item == 1) ? 'item' : 'items'}',
+                          style: TextStyle(fontSize: 17),
+                        )
+                      );
+
+                      ScaffoldMessenger.of(context)
+                        ..removeCurrentSnackBar()
+                        ..showSnackBar(snackBar);
+
+                      setState(() {
+                        product.stock -= item;
+                        item = 1;
+                      });
+                    },
                     child: Text(
                       'Buy Now',
                       style: TextStyle(fontSize: 16),

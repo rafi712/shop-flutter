@@ -35,11 +35,9 @@ flutter:
     - assets/images/bag.png
     - assets/images/book.png
     - assets/images/camera.png
-    - assets/images/cart.png
     - assets/images/earphone.png
     - assets/images/phone.png
     - assets/images/shoe.png
-    - assets/images/shop.png
     - assets/images/sofa.png
     - assets/images/speaker.png
   # fonts:

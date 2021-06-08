@@ -21,7 +21,10 @@ class BestSaleCards extends StatelessWidget {
               children: [
                 Text(
                   'Best Sale',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 25, 
+                    fontWeight: FontWeight.bold
+                  ),
                 ),
                 IconButton(
                   splashRadius: 20.0,
@@ -38,6 +41,7 @@ class BestSaleCards extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 8),
             height: 150,
             child: ListView(
+              physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               children: [
                 SizedBox(width: 10),
@@ -77,7 +81,8 @@ class BestSaleCards extends StatelessWidget {
                     elevation: 2,
                     clipBehavior: Clip.antiAlias,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10)
+                    ),
                     child: Ink.image(
                       image: AssetImage('assets/images/bag.png'),
                       height: 200,

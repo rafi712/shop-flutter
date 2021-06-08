@@ -65,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: TextField(
                   cursorColor: Colors.grey,
                   decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'Search product',
                     filled: true,
                     fillColor: Colors.grey[200],
                     prefixIcon: Icon(Icons.search),
