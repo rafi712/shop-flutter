@@ -10,7 +10,7 @@ class AllProductCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,62 +25,76 @@ class AllProductCards extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0).copyWith(top: 0),
             child: GridView.count(
-            mainAxisSpacing: 5,
-            crossAxisSpacing: 5,
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            childAspectRatio: 1 / 1.4,
-            crossAxisCount: 2,
-            children: productList.map((product) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) {
-                      return DetailScreen(product: product);
-                    })
-                  );
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
-                  ),
-                  elevation: 3,
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        color: product.coverColor,
-                        height: 150,
-                        child: Image.asset(
-                          product.imageUrl,
-                          fit: BoxFit.contain,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              childAspectRatio: 1 / 1.4,
+              crossAxisCount: 2,
+              children: productList.map((product) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return DetailScreen(product: product);
+                      })
+                    );
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    elevation: 3,
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          color: product.coverColor,
+                          height: 150,
+                          child: Hero(
+                            tag: product.name,
+                            child: Image.asset(
+                              product.imageUrl,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      Padding(
-                        padding: EdgeInsets.all(8).copyWith(left: 15),
-                        child: Text(
-                          product.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                        // SizedBox(height: 8),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15, bottom: 5),
+                                child: Text(
+                                  product.name,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  '\$${product.price}',
+                                  style: TextStyle(
+                                    fontSize: 16, color: Colors.black54),
+                                ),
+                              ),
+                            ],
+                          ),
                         )
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 15, bottom: 10),
-                        child: Text(
-                          product.price,
-                          style: TextStyle(
-                            fontSize: 16, color: Colors.black54),
-                        )
-                      ),
-                    ],
+
+                        
+                      ],
+                    ),
                   ),
-                ),
-              );
-            }).toList()),
+                );
+              }).toList()
+            ),
           ),
         ],
       ),

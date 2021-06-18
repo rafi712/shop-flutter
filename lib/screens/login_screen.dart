@@ -12,103 +12,69 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[400],
       body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.blue[300]!],
-              begin: FractionalOffset.topLeft,
-              end: FractionalOffset.bottomRight
-            )
-          ),
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Center(
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 50,
-                      color: Colors.white
-                    ),
+                padding: EdgeInsets.only(left: 30, top: 35),
+                height: 120,
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white   
                   ),
                 ),
               ),
-              buildLoginForm(),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'I\'m a new user.',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: (){}, 
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.purple[400]
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  padding: EdgeInsets.only(top: 0),
+                  // height: MediaQuery.of(context).size.height - 170,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(150)),
                   ),
-                )
+                  child: buildLoginForm(),
+                ),
               )
-            ]
-          )
+            ],
+          ),
         ),
       ),
     );
   }
 
-
-// Container(
-//               height: MediaQuery.of(context).size.height / 2,
-//               child: Center(
-//                 child: Image.asset(
-//                   'assets/images/cart.png',
-//                   height: 200,
-//                   fit: BoxFit.contain,
-//                 ),
-//               ),
-//             ),
   Widget buildLoginForm() {
-    return Container(
-      height: MediaQuery.of(context).size.height / 2.5,
-      padding: EdgeInsets.symmetric(
-        horizontal: 25.0,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30)
-      ),
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 50, top: 70),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
             decoration: InputDecoration(
-                contentPadding: EdgeInsets.fromLTRB(12, 20, 12, 12),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                hintText: 'Your username...',
-                labelText: 'Username',
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30))),
+              contentPadding: EdgeInsets.all(0),
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              hintText: 'Your username...',
+              labelText: 'Username',
+              prefixIcon: Icon(Icons.person),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.black12,
+                  width: 2
+                )
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.blue[300]!,
+                  width: 2
+                )
+              ),
+            ),
           ),
           SizedBox(
             height: 20,
@@ -116,20 +82,28 @@ class _LoginScreenState extends State<LoginScreen> {
           TextField(
             obscureText: !isPasswordVisible,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(12, 20, 12, 12),
+              contentPadding: EdgeInsets.all(0),
               floatingLabelBehavior: FloatingLabelBehavior.never,
               hintText: 'Your password...',
               labelText: 'Password',
               prefixIcon: Icon(Icons.lock_outline),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
               suffixIcon: IconButton(
                 icon: isPasswordVisible
-                    ? Icon(Icons.visibility_off)
-                    : Icon(Icons.visibility),
-                onPressed: () =>
-                    setState(() => isPasswordVisible = !isPasswordVisible),
+                  ? Icon(Icons.visibility_off)
+                  : Icon(Icons.visibility),
+                onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.black12,
+                  width: 2
+                )
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.blue[300]!,
+                  width: 2
+                )
               ),
             ),
           ),
@@ -139,18 +113,18 @@ class _LoginScreenState extends State<LoginScreen> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) {
-                  return MainScreen();
-                }));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen())
+                );
               },
               child: Text(
                 'Login',
                 style: TextStyle(fontSize: 17),
               ),
               style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))
+              ),
             ),
           )
         ],

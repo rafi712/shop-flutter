@@ -1,85 +1,89 @@
 import 'package:flutter/material.dart';
 
-class Products {
-  String name;
-  String price;
-  String imageUrl;
-  int stock;
-  Color coverColor;
-  Color buttonColor;
+class Product {
+  String name, imageUrl;
+  Color coverColor, buttonColor;
+  bool isFavorite, onCart;
+  int stock, selectedItem, price;
+  static List shoppingCart = [];
+  static List favoriteItems = [];
 
-  Products({
+  Product({
     required this.name,
-    required this.price,
     required this.imageUrl,
     required this.stock,
     required this.coverColor,
+    required this.price,
     required this.buttonColor,
+    this.selectedItem = 1,
+    this.isFavorite = false,
+    this.onCart = false
   });
 }
 
 var productList = [
-  Products(
+  Product(
     name: 'Camera',
-    price: 'Rp359.000',
+    price: 20,
     imageUrl: 'assets/images/camera.png',
     stock: 20,
     coverColor: Colors.deepPurple[300]!,
-    buttonColor: Colors.deepPurple[600]!
+    buttonColor: Colors.deepPurple[600]!,
   ),
-  Products(
+  Product(
     name: 'Sofa',
-    price: 'Rp2.500.000',
+    price: 100,
     imageUrl: 'assets/images/sofa.png',
     stock: 5,
     coverColor: Colors.indigo[300]!,
-    buttonColor: Colors.indigo
+    buttonColor: Colors.indigo,
   ),
-  Products(
+  Product(
     name: 'Book',
-    price: 'Rp50.000',
+    price: 3,
     imageUrl: 'assets/images/book.png',
     stock: 100,
     coverColor: Colors.blue[300]!,
-    buttonColor: Colors.blue[800]!
+    buttonColor: Colors.blue[800]!,
   ),
-  Products(
+  Product(
     name: 'Shoe',
-    price: 'Rp700.000',
+    price: 23,
     imageUrl: 'assets/images/shoe.png',
     stock: 36,
     coverColor: Colors.teal[300]!,
-    buttonColor: Colors.teal[700]!
+    buttonColor: Colors.teal[700]!,
   ),
-  Products(
+  Product(
     name: 'Earphone',
-    price: 'Rp1.000.000',
+    price: 75,
     imageUrl: 'assets/images/earphone.png',
     stock: 68,
     coverColor: Colors.green[300]!,
-    buttonColor: Colors.green[900]!
+    buttonColor: Colors.green[900]!,
   ),
-  Products(
+  Product(
     name: 'Bag',
-    price: 'Rp400.000',
+    price: 15,
     imageUrl: 'assets/images/bag.png',
     stock: 14,
     coverColor: Colors.red[300]!,
-    buttonColor: Colors.red[400]!
+    buttonColor: Colors.red[400]!,
   ),
-  Products(
+  Product(
     name: 'Speaker',
-    price: 'Rp150.000',
+    price: 30,
     imageUrl: 'assets/images/speaker.png',
     stock: 2,
     coverColor: Colors.deepOrange[300]!,
-    buttonColor: Colors.deepOrange
+    buttonColor: Colors.deepOrange,
   ),
-  Products(
-      name: 'Smartphone',
-      price: 'Rp2.000.000',
-      imageUrl: 'assets/images/phone.png',
-      stock: 17,
-      coverColor: Colors.brown[300]!,
-      buttonColor: Colors.brown[600]!),
+  Product(
+    name: 'Smartphone',
+    price: 200,
+    imageUrl: 'assets/images/phone.png',
+    stock: 17,
+    coverColor: Colors.brown[300]!,
+    buttonColor: Colors.brown[600]!,
+  ),
 ];

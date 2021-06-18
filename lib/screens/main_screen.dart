@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_shop/components/all_product_cards.dart';
 import 'package:my_shop/components/best_sale_cards.dart';
 import 'package:my_shop/screens/my_account_screen.dart';
+import 'package:my_shop/screens/my_cart_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       CircleAvatar(
                         backgroundImage:
-                            NetworkImage('https://picsum.photos/id/0/100/100'),
+                          NetworkImage('https://picsum.photos/id/1005/100/100'),
                         child: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -39,12 +40,20 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       IconButton(
-                          splashRadius: 25.0,
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.blue,
-                          )),
+                        splashRadius: 25.0,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return MyCartScreen();
+                            })
+                          );
+                        },
+                        icon: Icon(
+                          Icons.shopping_cart_outlined,
+                          color: Colors.blue,
+                        )
+                      ),
                     ],
                   ),
                 ),

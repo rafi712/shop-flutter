@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_shop/screens/login_screen.dart';
+import 'package:my_shop/screens/my_favorite_screen.dart';
 
 class MyAccountScreen extends StatelessWidget {
   @override
@@ -17,46 +18,26 @@ class MyAccountScreen extends StatelessWidget {
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30))),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SafeArea(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            splashRadius: 25.0,
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                              size: 29, color: Colors.white70
-                            ),
-                          ),
-                          IconButton(
-                            splashRadius: 25.0,
-                            onPressed: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return LoginScreen();
-                                }), 
-                                (route) => false
-                              );
-                            },
-                            icon: Icon(
-                              Icons.logout,
-                              size: 29, color: Colors.white70
-                            ),
-                          ),
-                        ],
+                      child: IconButton(
+                        splashRadius: 25.0,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 29, color: Colors.white70
+                        ),
                       ),
                     ),
                   ),
                   ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: NetworkImage('https://picsum.photos/id/0/100/100'),
+                      backgroundImage: NetworkImage('https://picsum.photos/id/1005/100/100'),
                       maxRadius: 30,
                     ),
                     title: Text(
@@ -94,7 +75,14 @@ class MyAccountScreen extends StatelessWidget {
                     ),
                     title: Text('My Favourite'),
                     trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: () {},
+                    onTap: () {
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return MyFavoriteScreen();
+                        })
+                      );
+                    },
                   ),
                   // dividerLine(),
                   ListTile(
@@ -150,6 +138,24 @@ class MyAccountScreen extends StatelessWidget {
                     title: Text('Help Center'),
                     trailing: Icon(Icons.arrow_forward_ios),
                     onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.logout_rounded,
+                      size: 29,
+                      color: Colors.red,
+                    ),
+                    title: Text('Log Out'),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return LoginScreen();
+                        }), 
+                        (route) => false
+                      );
+                    },
                   ),
                   // dividerLine(),
                 ],

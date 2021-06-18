@@ -54,22 +54,25 @@ class BestSaleCards extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Ink.image(
-                      image: AssetImage('assets/images/book.png'),
-                      height: 200,
-                      width: 150,
-                      fit: BoxFit.contain,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return DetailScreen(
-                                product: productList[2],
-                              );
-                            })
-                          );
-                        },
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return DetailScreen(
+                              product: productList[2],
+                            );
+                          })
+                        );
+                      },
+                      child: Hero(
+                        tag: 'book',
+                        child: Image.asset(
+                          'assets/images/book.png',
+                          width: 200,
+                          height: 150,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
@@ -83,20 +86,25 @@ class BestSaleCards extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Ink.image(
-                      image: AssetImage('assets/images/bag.png'),
-                      height: 200,
-                      width: 200,
-                      fit: BoxFit.contain,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) {
-                              return DetailScreen(product: productList[5]);
-                            })
-                          );
-                        },
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return DetailScreen(
+                              product: productList[5],
+                            );
+                          })
+                        );
+                      },
+                      child: Hero(
+                        tag: 'bag',
+                        child: Image.asset(
+                          'assets/images/bag.png',
+                          width: 200,
+                          height: 150,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
@@ -109,19 +117,25 @@ class BestSaleCards extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    child: Ink.image(
-                      image: AssetImage('assets/images/earphone.png'),
-                      height: 200,
-                      width: 200,
-                      fit: BoxFit.contain,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                              return DetailScreen(product: productList[4]);
-                            })
-                          );
-                        },
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return DetailScreen(
+                              product: productList[4],
+                            );
+                          })
+                        );
+                      },
+                      child: Hero(
+                        tag: 'earphone',
+                        child: Image.asset(
+                          'assets/images/earphone.png',
+                          width: 200,
+                          height: 150,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ),
