@@ -72,9 +72,11 @@ class _MyCartScreenState extends State<MyCartScreen> {
                   },
                   child: Container(
                     padding: EdgeInsets.all(10),
-                    margin: EdgeInsets
-                      .symmetric(horizontal: 8)
-                      .copyWith(bottom: (Product.shoppingCart.indexOf(product) == Product.shoppingCart.length - 1) ? 80 : 10),
+                    margin: EdgeInsets.only(                  
+                      left: 8,
+                      right: 8,
+                      bottom: (Product.shoppingCart.indexOf(product) == Product.shoppingCart.length - 1) ? 80 : 10
+                    ),
                     width: double.infinity,
                     height: 134,
                     decoration: BoxDecoration(

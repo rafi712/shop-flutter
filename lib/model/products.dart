@@ -24,7 +24,7 @@ class Product {
 var productList = [
   Product(
     name: 'Camera',
-    price: 20,
+    price: 150,
     imageUrl: 'assets/images/camera.png',
     stock: 20,
     coverColor: Colors.deepPurple[300]!,
@@ -32,7 +32,7 @@ var productList = [
   ),
   Product(
     name: 'Sofa',
-    price: 100,
+    price: 300,
     imageUrl: 'assets/images/sofa.png',
     stock: 5,
     coverColor: Colors.indigo[300]!,

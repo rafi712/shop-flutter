@@ -34,12 +34,64 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.only(top: 0),
-                  // height: MediaQuery.of(context).size.height - 170,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topRight: Radius.circular(150)),
                   ),
-                  child: buildLoginForm(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      buildLoginForm(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35),
+                        child: Column(
+                          children: [
+                            Text(
+                              'or',
+                              style: TextStyle(
+                                fontSize: 16
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            OutlinedButton.icon(
+                              onPressed: (){}, 
+                              icon: Image.asset(
+                                'assets/images/google-logo.png',
+                                width: 25,
+                                height: 25,
+                              ), 
+                              label: Text(
+                                'Login with google',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                minimumSize: Size(double.infinity, 50),
+                                shape: StadiumBorder(),
+                                side: BorderSide(
+                                  color: Colors.blue
+                                )
+                              ),
+                            )
+                          ]
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Don\'t have an account?', style: TextStyle(fontSize: 15)),
+                          TextButton(
+                            onPressed: () {},
+                            
+                            child: Text('Register', style: TextStyle(fontSize: 15))
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
@@ -51,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildLoginForm() {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 50, top: 70),
+      padding: const EdgeInsets.only(left: 35, right: 35, top: 70),
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
